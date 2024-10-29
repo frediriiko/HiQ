@@ -56,19 +56,19 @@ class Runner {
         place(x, y, direction);
     }
 
+    private void place(int x, int y, String direction) {
+        final Direction dir = Direction.valueOf(direction.toUpperCase());
+        if (table.isValidPosition(x, y)) {
+            player = new Player(x, y, dir);
+        }
+    }
+
     private void movePlayerIfValid() {
         final Player tempPlayer = new Player(player.getX(), player.getY(), player.getDirection());
         tempPlayer.move();
 
         if (table.isValidPosition(tempPlayer.getX(), tempPlayer.getY())) {
             player.move();
-        }
-    }
-
-    private void place(int x, int y, String direction) {
-        final Direction dir = Direction.valueOf(direction.toUpperCase());
-        if (table.isValidPosition(x, y)) {
-            player = new Player(x, y, dir);
         }
     }
 
